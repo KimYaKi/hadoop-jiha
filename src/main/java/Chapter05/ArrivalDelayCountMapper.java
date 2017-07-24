@@ -1,3 +1,4 @@
+package Chapter05;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -6,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class DepartureDelayCountMapper extends
+public class ArrivalDelayCountMapper extends
   Mapper<LongWritable, Text, Text, IntWritable> {
 
   // map 출력값
@@ -22,7 +23,7 @@ public class DepartureDelayCountMapper extends
     // 출력키 설정
     outputKey.set(parser.getYear() + "," + parser.getMonth());
 
-    if (parser.getDepartureDelayTime() > 0) {
+    if (parser.getArriveDelayTime() > 0) {
       // 출력 데이터 생성
       context.write(outputKey, outputValue);
     }

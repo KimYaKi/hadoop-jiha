@@ -1,3 +1,4 @@
+package Chapter05;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -9,25 +10,26 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-public class ArrivalDelayCount {
+public class DepartureDelayCount {
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
+
     // 입출력 데이터 경로 확인
     if (args.length != 2) {
-      System.err.println("Usage: ArrivalDelayCount <input> <output>");
+      System.err.println("Usage: DepartureDelayCount <input> <output>");
       System.exit(2);
     }
     // Job 이름 설정
-    Job job = new Job(conf, "ArrivalDelayCount");
+    Job job = new Job(conf, "DepartureDelayCount");
 
     // 입출력 데이터 경로 설정
     FileInputFormat.addInputPath(job, new Path(args[0]));
     FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
     // Job 클래스 설정
-    job.setJarByClass(ArrivalDelayCount.class);
+    job.setJarByClass(DepartureDelayCount.class);
     // Mapper 클래스 설정
-    job.setMapperClass(ArrivalDelayCountMapper.class);
+    job.setMapperClass(DepartureDelayCountMapper.class);
     // Reducer 클래스 설정
     job.setReducerClass(DelayCountReducer.class);
 
