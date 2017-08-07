@@ -5,6 +5,8 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import common.AirlinePerformanceParser;
+
 import java.io.IOException;
 
 public class DelayCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {

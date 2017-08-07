@@ -5,6 +5,8 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import common.AirlinePerformanceParser;
+
 import java.io.IOException;
 
 public class DelayCountMapperWithCounter
@@ -19,7 +21,7 @@ public class DelayCountMapperWithCounter
   @Override
   public void setup(Context context) throws IOException, InterruptedException {
     workType = context.getConfiguration().get("workType");
-  }
+  } 
 
   public void map(LongWritable key, Text value, Context context)
     throws IOException, InterruptedException {
